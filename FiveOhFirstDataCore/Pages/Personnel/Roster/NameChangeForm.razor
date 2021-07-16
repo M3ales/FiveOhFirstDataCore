@@ -260,7 +260,7 @@
                 Errors = errors;
             }
             
-            _advRefresh.CallDataReloadRequest(RefreshRequestValues.UserDetails_NickName, Trooper.Id);
+            _advRefresh.CallDataReloadRequest("UserDetails", Trooper.Id);
 
             IsEditing = false;
             Trooper = new();
