@@ -482,6 +482,8 @@ namespace FiveOhFirstDataCore.Core.Services
         {
             var data = new HailstormData();
 
+            using var _dbContext = _dbContextFactory.CreateDbContext();
+
             await _dbContext.Users.AsSplitQuery()
                 .Include(p => p.PendingPromotions)
                 .ThenInclude(p => p.RequestedBy)
@@ -493,6 +495,8 @@ namespace FiveOhFirstDataCore.Core.Services
 
         public async Task<List<Trooper>> GetTroopersWithPendingPromotions()
         {
+            using var _dbContext = _dbContextFactory.CreateDbContext();
+
             var pending = await _dbContext.Users
                 .Include(p => p.PendingPromotions)
                 .ThenInclude(p => p.RequestedBy)
